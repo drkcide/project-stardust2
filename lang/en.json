@@ -1,0 +1,120 @@
+{
+  "PJSD": {
+    "Ability": {
+      "Str": { "long": "Strength", "abbr": "str" },
+      "Con": { "long": "Constitution", "abbr": "con" },
+      "Dex": { "long": "Dexterity", "abbr": "dex" },
+      "Awa": { "long": "Awareness", "abbr": "awa" },
+      "Exp": { "long": "Expression", "abbr": "exp" },
+      "Foc": { "long": "Focus", "abbr": "foc" },
+      "Rea": { "long": "Reaction", "abbr": "rea" }
+    },
+    "Attribute": {
+      "Mass": { "long": "Mass", "abbr": "mass" },
+      "Height": { "long": "Height", "abbr": "height" },
+      "Weight": { "long": "Weight", "abbr": "weight" }
+    },
+
+    "SheetLabels": {
+      "Actor": "PjS Actor Sheet",
+      "Item": "PjS Item Sheet"
+    },
+    "Actor": {
+      "Tabs": {
+        "Biography": "Biography",
+        "Features": "Features",
+        "Gear": "Gear",
+        "Spells": "Spells",
+        "Effects": "Effects"
+      },
+      "base": {
+        "FIELDS": {
+          "biography": {"label": "Biography"},
+          "structure_points": {
+            "value": {"label": "Structure Points"},
+            "max": {"label": "Maximum Structure Points"}
+          },
+          "blood_points": {
+            "value": {"label": "Blood Points"},
+            "max": {"label": "Maximum Blood Points"}
+          }
+        }
+      },
+      "Character": {
+        "FIELDS": {
+          "attributes.mass.value": {"label": "Mass"}
+        }
+      },
+      "NPC": {
+        "FIELDS": {
+          "cr": {"label": "CR"}
+        },
+        "xp": {"label": "XP"}
+      }
+    },
+    "Item": {
+      "Tabs": {
+        "Attributes": "Attributes",
+        "Description": "Description",
+        "Effects": "Effects"
+      },
+      "Gear": {
+        "FIELDS": {
+          "rollFormula": {"label": "Roll Formula"},
+          "numDice": {"label": "Number of Dice"},
+          "dieSize": {"label": "Die Size"},
+          "rollMod": {"label": "Roll Modifier"},
+          "quantity": {"label": "Quantity"},
+          "weight": {"label": "Weight"}
+        }
+      },
+      "Spell": {
+        "FIELDS": {
+          "level": {"label": "Spell Level"}
+        },
+        "SpellLVL": "Level {level} Spells",
+        "AddLVL": "Add LVL {level}"
+      },
+      "Weapon": {
+        "FIELDS": {
+          "damage": {"label": "Damage"},
+          "damageType": {"label": "Damage Type"},
+          "rollFormula": {"label": "Roll Formula"},
+          "numDice": {"label": "Number of Dice"},
+          "dieSize": {"label": "Die Size"},
+          "rollMod": {"label": "Roll Modifier"},
+          "quantity": {"label": "Quantity"},
+          "weight": {"label": "Weight"}
+        }
+      },
+      "Armor": {
+        "FIELDS": {
+          "armortype": {"label": "Armor Type"},
+          "keneticvalue": {"label": "Kenetic AV"},
+          "non_keneticvalue": {"label": "Non-Kenetic AV"}
+        }
+      }
+    },
+
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC"
+    },
+    "Item": {
+      "gear": "Gear",
+      "feature": "Feature",
+      "spell": "Spell",
+      "weapon": "Weapon",
+      "armor" : "Armor"
+    }
+  }
+}

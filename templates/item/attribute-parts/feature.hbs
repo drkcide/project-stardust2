@@ -1,0 +1,36 @@
+{{! Attributes Tab }}
+<section
+  class='tab attributes {{tab.cssClass}}'
+  data-group='primary'
+  data-tab='attributes'
+>
+  <h3>Root Skill</h3>
+  <div class="feature-entry">
+    <label for="feature-name">Feature Name:</label>
+    <input type="text" id="feature-name" name="feature.name" placeholder="Enter feature name" />
+
+    <label for="ability-select">Select Ability:</label>
+    <select id="ability-select" name="feature.abilityKey" data-action="updateAbility">
+      {{#each @root.config.abilities as |ability key|}}
+        <option value="{{key}}">{{localize (lookup @root.config.abilities key)}}</option>
+      {{/each}}
+    </select>
+
+    <label for="base-task">Base Task (Ability Mod):</label>
+    <input type="text" id="base-task" name="feature.baseTask" value="{{this.abilityMod}}" readonly />
+
+    <label for="skill">Skill:</label>
+    <input type="number" id="skill" name="feature.skill" value="0" min="0" />
+
+    <label for="total">Total:</label>
+    <input type="text" id="total" name="feature.total" value="{{this.total}}" readonly />
+
+    <label class='resource-label rollable flexlarge align-left'
+           data-action='roll'
+           data-roll='d100'
+           data-label='Roll Total'
+           data-ability-key='{{feature.abilityKey}}'>
+      Roll Total
+    </label>
+  </div>
+</section>

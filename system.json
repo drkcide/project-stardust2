@@ -1,0 +1,71 @@
+{
+  "id": "project-stardust2",
+  "title": "Project Stardust 2",
+  "description": "The Project Stardust 2 system for FoundryVTT!",
+  "authors": [
+    {
+      "name": "Asacolips",
+      "discord": "asacolips"
+    },
+    {
+      "name": "Lee Talman",
+      "discord": ".pizzaWizard"
+    },
+    {
+      "name": "Joseph M.",
+      "url": "https://joseph-meehan.carrd.co/",
+      "discord": "chaosos"
+    },
+    {
+      "name": "Gator",
+      "discord": "RG3P0"
+    }
+
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "lang", "templates"]
+    }
+  },
+  "url": "Replace this with a link to your public repository",
+  "license": "LICENSE.txt",
+  "readme": "README.md",
+  "bugs": "Replace this with a link to file issues or tickets",
+  "changelog": "CHANGELOG.md",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/project-stardust2/assets/star-wars-sith-empire-symbol-hd.png",
+      "thumbnail": "systems/project-stardust2/assets/star-wars-sith-empire-symbol-hd.png"
+    }
+  ],
+  "version": "3.0.0",
+  "compatibility": {
+    "minimum": "12.328",
+    "verified": "12.330"
+  },
+  "esmodules": ["module/project-stardust2.mjs"],
+  "styles": ["css/project-stardust2.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "packFolders": [],
+  "socket": false,
+  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
+  "download": "This must link to a .zip file of the current version",
+  "background": "systems/project-stardust2/assets/anvil-impact.png",
+  "grid": {
+    "type": 1,
+    "distance": 1,
+    "units": "m",
+    "diagonals": 0
+  },
+  "primaryTokenAttribute": "structure_points",
+  "secondaryTokenAttribute": "blood_points"
+}

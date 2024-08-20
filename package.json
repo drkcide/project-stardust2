@@ -1,0 +1,18 @@
+{
+  "name": "project-stardust2",
+  "version": "3.0.0",
+  "description": "CSS compiler for the PjS system",
+  "scripts": {
+    "build": "sass src/scss/project-stardust2.scss css/project-stardust2.css --style=expanded --no-source-map",
+    "watch": "sass src/scss/project-stardust2.scss css/project-stardust2.css --style=expanded --source-map --watch"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Asacolips",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.53.0"
+  }
+}
