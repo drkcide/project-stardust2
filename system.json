@@ -28,10 +28,10 @@
       "paths": ["css", "lang", "templates"]
     }
   },
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/drkcide/project-stardust2",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "https://github.com/drkcide/project-stardust2/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
@@ -40,7 +40,7 @@
       "thumbnail": "systems/project-stardust2/assets/star-wars-sith-empire-symbol-hd.png"
     }
   ],
-  "version": "3.0.0",
+  "version": "3.0.1",
   "compatibility": {
     "minimum": "12.328",
     "verified": "12.330"
@@ -57,9 +57,9 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
-  "background": "systems/project-stardust2/assets/anvil-impact.png",
+  "manifest": "https://github.com/drkcide/project-stardust2/blob/main/system.json",
+  "download": "https://github.com/drkcide/project-stardust2/archive/refs/heads/main.zip",
+  "background": "systems/project-stardust2/assets/star-wars-sith-empire-symbol-hd.png",
   "grid": {
     "type": 1,
     "distance": 1,

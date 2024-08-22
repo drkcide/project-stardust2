@@ -63,7 +63,7 @@
     }
   },
   "Item": {
-    "types": ["gear", "feature", "spell", "weapon", "armor"],
+    "types": ["gear", "feature", "spell"],
     "htmlFields": ["description"],
     "templates": {
       "base": {
@@ -75,7 +75,7 @@
       "quantity": 1,
       "weight": 0,
       "damage": 0,
-      
+
       "formula": ""
     },
     "feature": {
@@ -84,63 +84,7 @@
     "spell": {
       "templates": ["base"],
       "spellLevel": 1
-    },
-    "weapon": {
-      "templates": ["base"],
-      "damage": {
-        "value": 0,
-        "type": {
-          "options": {
-            "slashing": "Slashing",
-            "piercing": "Piercing",
-            "kinetic": "Kinetic",
-            "plasma": "Plasma",
-            "energy": "Energy",
-            "acid": "Acid",
-            "cold": "Cold",
-            "fire": "Fire",
-            "poison": "Poison"
-          }
-        }
-      },
-      "effective range": {
-        "value": 0,
-        "type": {
-          "options": {
-            "melee": "Melee",
-            "ranged": "Ranged"
-          }
-        }
-      },
-      "max range": {
-        "value": 0
-      }
-    },
-    "armor": {
-      "templates": ["base"],
-      "armortype": {
-        "options": {
-          "cloth": "Cloth",
-          "padded": "Padded",
-          "leather": "Leather",
-          "chain": "Chain",
-          "plate": "Plate",
-          "resistweave": "Resist Weave",
-          "NIJ I": "NIJ I",
-          "II-A": "II-A",
-          "II": "II",
-          "III-A": "III-A",
-          "III": "III",
-          "IV": "IV"
-        }
-
-      },
-      "kenetic AV":{
-        "value": 0
-      },
-      "non-kenetic AV":{
-        "value": 0
-      }
     }
   }
 }
+    
