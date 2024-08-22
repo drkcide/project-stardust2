@@ -11,6 +11,31 @@ export class PjSItem extends Item {
     // preparation methods overridden (such as prepareBaseData()).
     super.prepareData();
 
+    // Ensure the system object has the necessary fields for gear, armor, and weapons
+    if (!this.system.itemType) {
+      this.system.itemType = 'equipment'; // Default to equipment
+    }
+    if (this.system.itemType === 'armor') {
+      if (!this.system.keneticAV) {
+        this.system.keneticAV = { value: 0 }; // Default value for kinetic AV
+      }
+      if (!this.system.nonKineticAV) {
+        this.system.nonKineticAV = { value: 0 }; // Default value for non-kinetic AV
+      }
+    }
+    if (this.system.itemType === 'weapon') {
+      if (!this.system.roll) {
+        this.system.roll = {
+          diceNum: 0,
+          diceSize: '',
+          diceBonus: ''
+        };
+      }
+      if (!this.system.applicableSkill) {
+        this.system.applicableSkill = ''; // Default value for applicable skill
+      }
+    }
+
     // Ensure the system object has the skill, total, name, and abilityKey fields
     if (!this.system.skill) {
       this.system.skill = 0; // Default value for skill
@@ -55,51 +80,33 @@ export class PjSItem extends Item {
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
     const label = `[${item.type}] ${item.name}`;
-// Roll a d100
-const roll = new Roll('1d100');
-const result = await roll.evaluate(); // Evaluate the roll asynchronously
 
-// Compare the roll result with the total
-const total = this.system.total; // Get the total from the item document
-const comparisonResult = result.total <= total ? "Success" : "Failure"; // Determine success or failure
-const content = `<div style="text-align: center;">
+    // Roll a d100
+    const roll = new Roll('1d100');
+    const result = await roll.evaluate(); // Evaluate the roll asynchronously
+
+    const featureId = this.system.selectedFeature;
+    const feature = this.actor.items.get(featureId);
+    // Get the feature total
+    const featureTotal = this.system.total || 0; // Get the feature total
+
+    // Compare the roll result with the feature total
+    const comparisonResult = result.total <= featureTotal ? "Success" : "Failure"; // Determine success or failure
+    const content = `<div style="text-align: center;">
             <h3 style="margin: 0;">
                 ${comparisonResult === "Success" ? 
                     `<span style="color: green; font-weight: bold;">${comparisonResult}</span>` : 
                     `<span style="color: red; font-weight: bold;">${comparisonResult}</span>`}
             </h3>
-            <p>${item.name} rolled a ${result.total} against a total of ${total}.</p>
+            <p>${item.name} rolled a ${result.total} against a feature total of ${featureTotal}.</p>
         </div>`;
-// Create a chat message with the roll result
 
-    
-
-
-    // If there's no roll data, send a chat message.
-    if (!this.system.formula) {
-      ChatMessage.create({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-        content: content,
-      });
-    }
-    // Otherwise, create a roll and send a chat message from it.
-    else {
-      // Retrieve roll data.
-      const rollData = this.getRollData();
-
-      // Invoke the roll and submit it to chat.
-      const roll = new Roll(rollData.formula, rollData);
-      // If you need to store the value first, uncomment the next line.
-      // const result = await roll.evaluate();
-      roll.toMessage({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-        
-      });
-      return roll;
-    }
+    // Create a chat message with the roll result
+    ChatMessage.create({
+      speaker: speaker,
+      rollMode: rollMode,
+      flavor: label,
+      content: content,
+    });
   }
 }

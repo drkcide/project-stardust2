@@ -3,7 +3,9 @@
   <ol class='items-list'>
     <li class='item flexrow items-header'>
       <div class='item-name'>{{localize 'Name'}}</div>
-      <div class='item-formula'>{{localize 'PJSD.Item.Gear.FIELDS.rollFormula.label'}}</div>
+      <div class='item-type'>{{localize 'PJSD.Item.Gear.FIELDS.damageType.label'}}</div>
+      <div class='item-formula'>{{localize 'PJSD.Item.Gear.FIELDS.damage.label'}}</div>
+      
       <div class='item-controls'>
         {{#if @root.editable}}
           <a
@@ -39,7 +41,7 @@
           </div>
           <div>{{item.name}}</div>
         </div>
-        <div class='item-formula item-prop'>{{item.system.formula}}</div>
+        <div class='item-formula item-prop'>{{item.system.damage}}</div>
         <div class='item-controls'>
           <a
             class='item-control item-edit'

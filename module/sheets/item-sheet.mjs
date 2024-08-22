@@ -55,12 +55,7 @@ export class PjSItemSheet extends api.HandlebarsApplicationMixin(
     attributesSpell: {
       template: 'systems/project-stardust2/templates/item/attribute-parts/spell.hbs',
     },
-    attributesWeapon: {
-      template: 'systems/project-stardust2/templates/item/attribute-parts/weapon.hbs',
-    },
-    attributesArmor: {
-      template: 'systems/project-stardust2/templates/item/attribute-parts/armor.hbs',
-    },
+
     effects: {
       template: 'systems/project-stardust2/templates/item/effects.hbs',
     },
@@ -84,12 +79,7 @@ export class PjSItemSheet extends api.HandlebarsApplicationMixin(
       case 'spell':
         options.parts.push('attributesSpell');
         break;
-      case 'weapon':
-        options.parts.push('attributesWeapon');
-        break;
-      case 'armor':
-        options.parts.push('attributesArmor');
-        break;
+
     }
   }
 
@@ -249,6 +239,14 @@ export class PjSItemSheet extends api.HandlebarsApplicationMixin(
      featureNameInput.addEventListener('input', (event) => {
          this._updateFeatureName(event.target.value);
      });
+ }
+
+ // Add event listener for selected feature change
+ const selectedFeatureSelect = this.element.querySelector('#selected-feature');
+ if (selectedFeatureSelect) {
+   selectedFeatureSelect.addEventListener('change', (event) => {
+     this.document.update({ 'system.selectedFeature': event.target.value });
+   });
  }
 }
    /**

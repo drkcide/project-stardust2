@@ -54,12 +54,7 @@ export class PjSActorSheet extends api.HandlebarsApplicationMixin(
     gear: {
       template: 'systems/project-stardust2/templates/actor/gear.hbs',
     },
-    weapons: {
-      template: 'systems/project-stardust2/templates/actor/weapons.hbs',
-    },
-    armor: {
-      template: 'systems/project-stardust2/templates/actor/armor.hbs',
-    },
+
     spells: {
       template: 'systems/project-stardust2/templates/actor/spells.hbs',
     },
@@ -78,10 +73,10 @@ export class PjSActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('biography', 'gear', 'weapons','armor', 'effects');
+        options.parts.push('biography', 'gear', 'effects');
         break;
       case 'npc':
-        options.parts.push('gear', 'effects', 'weapons','armor');
+        options.parts.push('gear', 'effects');
         break;
     }
   }
@@ -142,12 +137,7 @@ export class PjSActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'features':
-      case 'weapons':
-        context.tab = context.tabs[partId];
-        break;
-      case 'armor':
-        context.tab = context.tabs[partId];
-        break;
+
 
       case 'spells':
       case 'gear':
@@ -217,14 +207,7 @@ export class PjSActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'biography';
           tab.label += 'Biography';
           break;
-        case 'weapons':
-          tab.id = 'weapons';
-          tab.label += 'Weapons';
-          break;
-        case 'armor':
-          tab.id = 'armor';
-          tab.label += 'Armor';
-            break;
+
         case 'gear':
           tab.id = 'gear';
           tab.label += 'Gear';
@@ -291,8 +274,7 @@ export class PjSActorSheet extends api.HandlebarsApplicationMixin(
 
     // Sort then assign
     context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.weapons = weapons.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0))
     context.spells = spells;
   }
 

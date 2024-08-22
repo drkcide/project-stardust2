@@ -6,37 +6,104 @@
 >
   {{! As you add new fields, add them in here! }}
   <div class='resource'>
-    <label class='resource-label'>{{localize 'PJSD.Item.Gear.FIELDS.rollFormula.label'}}:</label>
-    <span>{{system.formula}}</span>
-    <div class='grid grid-4col'>
-      <div class='grid-span-1'>
-        <label class='resource-label'>{{localize 'PJSD.Item.Gear.FIELDS.numDice.label'}}</label>
-        <input
-          type='text'
-          name='system.roll.diceNum'
-          value='{{system.roll.diceNum}}'
-          data-dtype='Number'
-        />
-      </div>
-      <div class='grid-span-1'>
-        <label class='resource-label'>{{localize 'PJSD.Item.Gear.FIELDS.dieSize.label'}}</label>
-        <input
-          type='text'
-          name='system.roll.diceSize'
-          value='{{system.roll.diceSize}}'
-          data-dtype='String'
-        />
-      </div>
-      <div class='grid-span-2'>
-        <label class='resource-label'>{{localize 'PJSD.Item.Gear.FIELDS.rollMod.label'}}</label>
-        <input
-          type='text'
-          name='system.roll.diceBonus'
-          value='{{system.roll.diceBonus}}'
-          data-dtype='String'
-        />
-      </div>
-    </div>
+    <label class='resource-label'>Item Type:</label>
+    <select id="item-type" name="system.itemType">
+      <option value="equipment" {{#if (eq system.itemType "equipment")}}selected{{/if}}>Equipment</option>
+      <option value="armor" {{#if (eq system.itemType "armor")}}selected{{/if}}>Armor</option>
+      <option value="weapon" {{#if (eq system.itemType "weapon")}}selected{{/if}}>Weapon</option>
+    </select>
+  </div>
 
+  {{#if (eq system.itemType "armor")}}
+  <div class='resource'>
+    <label for="armortype">Armor Type:</label>
+    <input type="text" id="armortype" name="system.armortype" value="{{system.armortype}}" />
+  </div>
+  <div class='resource'>
+    <label for="kenetic-av">Kinetic AV:</label>
+    <input type="number" id="kenetic-av" name="system.keneticAV.value" value="{{system.keneticAV.value}}" min="0" />
+  </div>
+  <div class='resource'>
+    <label for="non-kenetic-av">Non-Kinetic AV:</label>
+    <input type="number" id="non-kenetic-av" name="system.nonKineticAV.value" value="{{system.nonKineticAV.value}}" min="0" />
+  </div>
+  {{/if}}
+
+  {{#if (eq system.itemType "weapon")}}
+  <div class='resource'>
+    <label class='resource-label'>Weapon Name:</label>
+    <input type='text' name='system.weaponName' value='{{system.weaponName}}' data-dtype='String' />
+  </div>
+  <div class='resource'>
+    <label class='resource-label'>Weapon Type:</label>
+    <select id="weapon-type" name="system.weaponType">
+      <option value="ranged" {{#if (eq system.weaponType "ranged")}}selected{{/if}}>Ranged</option>
+      <option value="melee" {{#if (eq system.weaponType "melee")}}selected{{/if}}>Melee</option>
+      <option value="explosive" {{#if (eq system.weaponType "explosive")}}selected{{/if}}>Explosive</option>
+    </select>
+  </div>
+  <div class='resource'>
+    <label class='resource-label'>Damage:</label>
+    <input type='text' name='system.damage' value='{{system.damage}}' data-dtype='String' />
+  </div>
+  <div class='resource'>
+    <label class='resource-label'>Damage Type:</label>
+    <<select id="damage-type" name="system.damageType">
+    <option value="Kinetic" {{#if (eq system.damageType "Kinetic")}}selected{{/if}}>Kinetic</option>
+    <option value="Plasma" {{#if (eq system.damageType "Plasma")}}selected{{/if}}>Plasma</option>
+    <option value="Energy" {{#if (eq system.damageType "Energy")}}selected{{/if}}>Energy</option>
+    <option value="Acid" {{#if (eq system.damageType "Acid")}}selected{{/if}}>Acid</option>
+    <option value="Cold" {{#if (eq system.damageType "Cold")}}selected{{/if}}>Cold</option>
+    <option value="Fire" {{#if (eq system.damageType "Fire")}}selected{{/if}}>Fire</option>
+    <option value="Poison" {{#if (eq system.damageType "Poison")}}selected{{/if}}>Poison</option>
+  </select>
+  </div>
+  {{/if}}
+
+  <div class='resource'>
+   <div class='resource'>
+  <label class='resource-label'>Select Feature:</label>
+  <select id="selected-feature" name="system.selectedFeature">
+    {{#each @root.actor.items as |item|}}
+      {{#if (eq item.type "feature")}}
+        <option value="{{item._id}}" {{#if (eq ../system.selectedFeature item._id)}}selected{{/if}}>{{item.name}}</option>
+      {{/if}}
+    {{/each}}
+  </select>
+</div>
+<div class='resource'>
+  <label class='resource-label rollable' data-action='roll' data-feature-id='{{system.selectedFeature}}'>Roll Against Feature</label>
+</div>
+  
+
+  {{#if (eq system.itemType "equipment")}}
+  <div class='resource'>
+    <label class='resource-label'>{{localize 'PJSD.Item.Gear.FIELDS.quantity.label'}}:</label>
+    <input
+      type='text'
+      name='system.quantity'
+      value='{{system.quantity}}'
+      data-dtype='Number'
+    />
+  </div>
+  <div class='resource'>
+    <label class='resource-label'>{{localize 'PJSD.Item.Gear.FIELDS.weight.label'}}:</label>
+    <input
+      type='text'
+      name='system.weight'
+      value='{{system.weight}}'
+      data-dtype='Number'
+    />
+  </div>
+  {{/if}}
+
+  <div class='resource'>
+    <label class='resource-label rollable flexlarge align-left'
+           data-action='roll'
+           data-roll='d100'
+           data-label='Roll Total'
+           data-ability-key='{{system.applicableSkill}}'>
+      Roll Total
+    </label>
   </div>
 </section>

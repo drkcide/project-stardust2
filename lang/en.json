@@ -62,6 +62,11 @@
         "FIELDS": {
           "rollFormula": {"label": "Roll Formula"},
           "numDice": {"label": "Number of Dice"},
+          "damage": {"label": "Damage"},
+          "damageType": {"label": "Damage Type"},
+          "armortype": {"label": "Armor Type"},
+          "keneticvalue": {"label": "Kinetic AV"},
+          "non_keneticvalue": {"label": "Non-Kinetic AV"},
           "dieSize": {"label": "Die Size"},
           "rollMod": {"label": "Roll Modifier"},
           "quantity": {"label": "Quantity"},
@@ -112,9 +117,8 @@
     "Item": {
       "gear": "Gear",
       "feature": "Feature",
-      "spell": "Spell",
-      "weapon": "Weapon",
-      "armor" : "Armor"
+      "spell": "Spell"
+
     }
   }
 }

@@ -70,10 +70,24 @@ Hooks.once('init', function () {
 Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
+// Register the localize helper
+Handlebars.registerHelper('localize', function(key) {
+  return game.i18n.localize(key);
+});
 Handlebars.registerHelper('object-to-array', function(obj) {
   return Object.keys(obj).map(key => {
     return { key: key, value: obj[key] };
   });
+});
+// Register the includes helper
+Handlebars.registerHelper('includes', function(array, value) {
+  if (!Array.isArray(array)) return false;
+  return array.includes(value);
+});
+
+// Initialize your module
+Hooks.once('init', async function() {
+  console.log('YourModuleName | Initializing YourModuleName');
 });
 
 /* -------------------------------------------- */

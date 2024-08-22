@@ -74,7 +74,9 @@
       "templates": ["base"],
       "quantity": 1,
       "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "damage": 0,
+      
+      "formula": ""
     },
     "feature": {
       "templates": ["base"]
